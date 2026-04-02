@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0f17;
+    font-family: 'Inter', sans-serif;
+    color: #eef2ff;
+    padding: 2rem 1.5rem;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #FACC15, #FF8C42);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.hero .sub {
+    color: #9ca3af;
+    font-weight: 500;
+    font-size: 1.1rem;
+    border-bottom: 1px dashed #2d3748;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+
+.horario-text {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    background: #11182780;
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 40px;
+}
+
+.promos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.promo-card {
+    background: #111827;
+    border-radius: 2rem;
+    padding: 1.5rem 1.5rem;
+    flex: 1 1 220px;
+    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s;
+    border: 1px solid #2a3441;
+}
+
+.promo-card:hover {
+    transform: translateY(-5px);
+    border-color: #facc1566;
+}
+
+.promo-card h3 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #FACC15;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.promo-card h3 i {
+    font-size: 1.6rem;
+    color: #FF8C42;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin: 0.4rem 0;
+}
+
+.price small {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #9ca3af;
+}
+
+.promo-note {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    margin-top: 0.5rem;
+    border-top: 1px solid #1f2a3e;
+    padding-top: 0.6rem;
+}
+
+.badge {
+    background: #2d2f3b;
+    border-radius: 40px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #facc15;
+    display: inline-block;
+}
+
+.plazo-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.chip-plazo {
+    background: #111c2e;
+    border-radius: 60px;
+    padding: 0.6rem 1.6rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid #2a3a55;
+    backdrop-filter: blur(4px);
+}
+
+.chip-plazo i {
+    margin-right: 8px;
+    color: #FACC15;
+}
+
+.schedule-section {
+    background: #0f1420e6;
+    border-radius: 2rem;
+    padding: 1.8rem 1.2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid #263040;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-left: 5px solid #FACC15;
+    padding-left: 1rem;
+}
+
+.section-title i {
+    color: #FACC15;
+    font-size: 1.7rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 1.5rem;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    min-width: 800px;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #1f2a44;
+    vertical-align: middle;
+}
+
+.schedule-table th {
+    background: #0b1120;
+    color: #FACC15;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.schedule-table td {
+    background: #11182780;
+    font-weight: 500;
+}
+
+.time-slot {
+    font-weight: 700;
+    color: #FFD966;
+}
+
+.empty-slot {
+    color: #5f6e8a;
+    font-style: italic;
+    font-size: 0.75rem;
+}
+
+.row-group td:first-child {
+    background: #0f172a;
+    font-weight: 700;
+    color: #FACC15;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: #0a0f1c;
+    border-radius: 2rem;
+    padding: 1.3rem 2rem;
+    gap: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #2d3a4e;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.8rem;
+    align-items: center;
+}
+
+.contact-info a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-info a i {
+    color: #FACC15;
+    font-size: 1.2rem;
+}
+
+.contact-info a:hover {
+    color: #FACC15;
+}
+
+.social-btn {
+    background: #1e293b;
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.social-btn i {
+    font-size: 1.3rem;
+}
+
+.social-btn:hover {
+    background: #FACC15;
+    color: #0f172a;
+}
+
+.legal {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-top: 2rem;
+    color: #5b6e8c;
+}
+
+@media (max-width: 750px) {
+    body {
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .price {
+        font-size: 1.6rem;
+    }
+
+    .contact-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .schedule-table {
+        font-size: 0.7rem;
+    }
+}
