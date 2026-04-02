@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Gimnasio Terapias | Entrenamiento y Salud</title>
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Poppins -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0f17;
+            font-family: 'Inter', sans-serif;
+            color: #eef2ff;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* HEADER / HERO */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #FACC15, #FF8C42);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            color: #9ca3af;
+            font-weight: 500;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed #2d3748;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        /* tarjetas de promos */
+        .promos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .promo-card {
+            background: #111827;
+            border-radius: 2rem;
+            padding: 1.5rem 1.8rem;
+            flex: 1 1 240px;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #2a3441;
+            backdrop-filter: blur(2px);
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+            border-color: #facc1533;
+            box-shadow: 0 25px 35px -12px black;
+        }
+
+        .promo-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FACC15;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .promo-card h3 i {
+            font-size: 1.7rem;
+            color: #FF8C42;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin: 0.5rem 0;
+        }
+
+        .price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #9ca3af;
+        }
+
+        .promo-note {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-top: 0.5rem;
+            border-top: 1px solid #1f2a3e;
+            padding-top: 0.6rem;
+        }
+
+        .badge {
+            background: #2d2f3b;
+            border-radius: 40px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #facc15;
+            display: inline-block;
+        }
+
+        .family-group {
+            background: linear-gradient(145deg, #0f172a, #0a0f1c);
+        }
+
+        /* horarios tabla responsiva */
+        .schedule-section {
+            background: #0f1420e6;
+            border-radius: 2rem;
+            padding: 1.8rem 1.2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #263040;
+            backdrop-filter: blur(2px);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 5px solid #FACC15;
+            padding-left: 1rem;
+        }
+
+        .section-title i {
+            color: #FACC15;
+            font-size: 1.7rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 1.5rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 680px;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 1rem 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid #1f2a44;
+        }
+
+        .schedule-table th {
+            background: #0b1120;
+            color: #FACC15;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #FACC1566;
+        }
+
+        .schedule-table td {
+            background: #11182780;
+            font-weight: 500;
+        }
+
+        .time-slot {
+            font-weight: 700;
+            color: #FFD966;
+        }
+
+        .activity-name {
+            font-weight: 600;
+            display: block;
+        }
+
+        .empty-slot {
+            color: #4b556b;
+            font-style: italic;
+            font-size: 0.8rem;
+        }
+
+        /* fila mañana, tarde, noche */
+        .row-group td:first-child {
+            background: #0f172a;
+            font-weight: 700;
+            color: #FACC15;
+            text-align: left;
+            padding-left: 1rem;
+        }
+
+        /* contacto / footer */
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: #0a0f1c;
+            border-radius: 2rem;
+            padding: 1.3rem 2rem;
+            gap: 1rem;
+            margin-top: 2rem;
+            border: 1px solid #2d3a4e;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .contact-info a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info a i {
+            color: #FACC15;
+            font-size: 1.2rem;
+        }
+
+        .contact-info a:hover {
+            color: #FACC15;
+        }
+
+        .social-btn {
+            background: #1e293b;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .social-btn i {
+            font-size: 1.3rem;
+        }
+
+        .social-btn:hover {
+            background: #FACC15;
+            color: #0f172a;
+        }
+
+        .legal {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 2rem;
+            color: #5b6e8c;
+        }
+
+        @media (max-width: 750px) {
+            body {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .promo-card {
+                padding: 1rem 1.2rem;
+            }
+
+            .price {
+                font-size: 1.6rem;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hero / nombre -->
+        <div class="hero">
+            <h1><i class="fas fa-dumbbell"></i> GIMNASIO TERAPIAS GIM</h1>
+            <div class="sub">💪 Movimiento · Salud · Energía</div>
+            <div style="margin-top: 1rem; font-size: 0.9rem; color: #b9c7d9;">
+                <i class="far fa-clock"></i> LUNES A VIERNES · 9 a 12hs | 15 a 22hs
+            </div>
+        </div>
+
+        <!-- PROMOS DESTACADAS (datos exactos) -->
+        <div class="promos-grid">
+            <div class="promo-card">
+                <h3><i class="fas fa-infinity"></i> PASE LIBRE</h3>
+                <div class="price">$28.000 <small>/mes</small></div>
+                <div class="promo-note"><i class="fas fa-check-circle"></i> Sin cargo de inscripción</div>
+                <div><span class="badge">🔥 Libre acceso</span></div>
+            </div>
+            <div class="promo-card">
+                <h3><i class="fas fa-stethoscope"></i> KINESIOLÓGICO</h3>
+                <div class="price">$20.000</div>
+                <div class="promo-note">Consultorio kinésico - funcional</div>
+                <div><span class="badge">🦵 Especializado</span></div>
+            </div>
+            <div class="promo-card">
+                <h3><i class="fas fa-rocket"></i> PROMO COMPLETA</h3>
+                <div class="price">$44.000</div>
+                <div class="promo-note">Pase libre + Consultorio kinésico</div>
+                <div><span class="badge">✨ AHORRO total</span></div>
+            </div>
+            <div class="promo-card">
+                <h3><i class="fas fa-users"></i> GRUPO FAMILIAR</h3>
+                <div class="price">$26.000 <small>c/u</small></div>
+                <div class="promo-note">Por persona, mínimo 2 integrantes</div>
+                <div><span class="badge">👨‍👩‍👧‍👦 Mejor valor</span></div>
+            </div>
+        </div>
+
+        <!-- PROMOCIONES POR PLAZO: 6 MESES / ANUAL -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2.5rem;">
+            <div style="background: #111c2e; border-radius: 60px; padding: 0.5rem 1.5rem; font-weight: 600;">
+                <i class="fas fa-calendar-alt"></i> PROMO 6 MESES: <span style="color:#FACC15">PAGÁ SOLO 5</span>
+            </div>
+            <div style="background: #111c2e; border-radius: 60px; padding: 0.5rem 1.5rem; font-weight: 600;">
+                <i class="fas fa-calendar-check"></i> PROMO ANUAL: <span style="color:#FACC15">PAGÁ SOLO 10 MESES</span>
+            </div>
+        </div>
+
+        <!-- HORARIOS SEMANALES (exactamente según imagen, con corrección de días/horarios) -->
+        <div class="schedule-section">
+            <div class="section-title">
+                <i class="fas fa-table-list"></i>
+                <span>Horarios de Clases · Lunes a Viernes</span>
+            </div>
+            <div class="table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Franja</th>
+                            <th>LUNES</th>
+                            <th>MARTES</th>
+                            <th>MIÉRCOLES</th>
+                            <th>JUEVES</th>
+                            <th>VIERNES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- MAÑANA (10:30 a 11:30) según tabla: Lunes funcional, pero otros días no hay en mañana, igual mostramos estructura -->
+                        <tr class="row-group">
+                            <td><i class="fas fa-sun"></i> MAÑANA</td>
+                            <td><span class="activity-name">10:30 - 11:30<br><strong>FUNCIONAL</strong></span></td>
+                            <td><span class="empty-slot">-</span></td>
+                            <td><span class="empty-slot">-</span></td>
+                            <td><span class="empty-slot">-</span></td>
+                            <td><span class="empty-slot">-</span></td>
+                        </tr>
+                        <!-- TARDE según datos: MARTES 15:30 RITMOS, MIERCOLES 15:30 RITMOS, JUEVES 19hs FUNCIONAL (en la imagen se repite), VIERNES 18:30 ZUMBA, LUNES 18:30 ZUMBA -->
+                        <tr class="row-group">
+                            <td><i class="fas fa-cloud-sun"></i> TARDE</td>
+                            <td><span class="time-slot">18:30 - 19:30</span><br><strong>ZUMBA</strong></td>
+                            <td><span class="time-slot">15:30 - 16:30</span><br><strong>RITMOS</strong><br><span
+                                    style="font-size:0.75rem;">+ 19hs FUNCIONAL</span></td>
+                            <td><span class="time-slot">15:30 - 16:30</span><br><strong>RITMOS</strong><br><span
+                                    style="font-size:0.75rem;">+ 18:30 ZUMBA</span></td>
+                            <td><span class="time-slot">19:00 - 20:00</span><br><strong>FUNCIONAL</strong></td>
+                            <td><span class="time-slot">18:30 - 19:30</span><br><strong>ZUMBA</strong></td>
+                        </tr>
+                        <!-- NOCHE: AEROBOX, BACHATA/SALSA, STEP, etc (según imagen) -->
+                        <tr class="row-group">
+                            <td><i class="fas fa-moon"></i> NOCHE</td>
+                            <td><span class="time-slot">19:30 - 20:30</span><br><strong>AEROBOX-LOCAL</strong></td>
+                            <td><span class="time-slot">20:00 - 21:00</span><br><strong>BACHATA SALSA</strong></td>
+                            <td><span class="time-slot">19:30 - 20:30</span><br><strong>AEROBOX - STEP LOCAL</strong>
+                            </td>
+                            <td><span class="time-slot">20:00 - 21:00</span><br><strong>BACHATA SALSA</strong></td>
+                            <td><span class="time-slot">19:30 - 20:30</span><br><strong>AERO-BOX-STEP-LOCAL</strong>
+                            </td>
+                        </tr>
+                        <!-- Agregamos detalle extra de la tabla original: los jueves también hay funcional a las 19 (ya está en tarde) y ritmos martes/miercoles correcto, también en la imagen dice en MARTES 19hs FUNCIONAL, lo incluimos como nota en tarde. Todo consistente -->
+                    </tbody>
+                </table>
+            </div>
+            <div
+                style="margin-top: 1rem; font-size: 0.75rem; text-align: center; background: #00000033; border-radius: 2rem; padding: 0.5rem;">
+                <i class="fas fa-info-circle"></i> Clases sujetas a cambios mínimos. Consultar disponibilidad.
+                <strong>¡Sumate a la energía!</strong>
+            </div>
+        </div>
+
+        <!-- Ubicación + teléfono + instagram (datos exactos) -->
+        <div class="contact-bar">
+            <div class="contact-info">
+                <a href="https://maps.google.com/?q=Fournier+2265+B°+Ameghino+Sur" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> Fournier 2265, Bº Amegahino Sur
+                </a>
+                <a href="tel:+5494652095">
+                    <i class="fas fa-phone-alt"></i> 465-2095
+                </a>
+                <a href="https://instagram.com/GIMNASIOTERAPIAS" target="_blank">
+                    <i class="fab fa-instagram"></i> @GIMNASIOTERAPIAS
+                </a>
+            </div>
+            <div>
+                <a href="https://instagram.com/GIMNASIOTERAPIAS" target="_blank" class="social-btn">
+                    <i class="fab fa-instagram"></i> Seguinos
+                </a>
+            </div>
+        </div>
+        <div class="legal">
+            <i class="far fa-registered"></i> GIMNASIO TERAPIAS GIM · Entrenamiento funcional, ritmos, zumba, bachata y
+            más · ¡Vení a entrenar!
+        </div>
+    </div>
+
+    <!-- JS pequeño para interactividad: tooltip animación o actualización automática de año (opcional) -->
+    <script>
+        (function () {
+            // efecto sutil: agregar hover dinámico a las celdas de horarios para destacar actividad
+            const allCells = document.querySelectorAll('.schedule-table td');
+            for (let cell of allCells) {
+                if (cell.innerText.trim() !== '-' && cell.innerText.trim() !== '' && !cell.classList.contains('row-group')) {
+                    cell.style.transition = 'background 0.2s';
+                    cell.addEventListener('mouseenter', (e) => {
+                        e.currentTarget.style.backgroundColor = '#facc1522';
+                    });
+                    cell.addEventListener('mouseleave', (e) => {
+                        e.currentTarget.style.backgroundColor = '';
+                    });
+                }
+            }
+            // pequeña mejora: mostrar alerta amigable en promociones con click para info (no invasivo)
+            const promoCards = document.querySelectorAll('.promo-card');
+            promoCards.forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    let title = card.querySelector('h3')?.innerText || 'Promoción';
+                    let priceElem = card.querySelector('.price')?.innerText || '';
+                    alert(`📢 ${title} - ${priceElem}\nConsultá más detalles en recepción o llamanos al 465-2095. ¡Te esperamos!`);
+                });
+            });
+            // datos de meses y promociones animadas sutilmente con consola
+            console.log('🚀 Web GIMNASIO TERAPIAS | Promociones activas: Libre $28000, Kinesio $20000, Completa $44000, Familiar $26000 c/u');
+            // tooltip extra para promos plazo
+            const plazoDivs = document.querySelectorAll('div[style*="border-radius: 60px"]');
+            plazoDivs.forEach(el => {
+                el.addEventListener('click', () => {
+                    if (el.innerText.includes('6 MESES')) {
+                        alert('🔥 PROMO 6 MESES: abonando solo 5 cuotas. ¡Ahorro asegurado!');
+                    } else if (el.innerText.includes('ANUAL')) {
+                        alert('📅 PROMO ANUAL: pagás 10 meses y disfrutás 12 meses completos de actividad.');
+                    }
+                });
+                el.style.cursor = 'pointer';
+            });
+            // agregar info de horarios dinámica simplificada (resumen)
+            const horarioNota = document.createElement('div');
+            horarioNota.style.marginTop = '12px';
+            horarioNota.style.fontSize = '0.7rem';
+            horarioNota.style.textAlign = 'center';
+            horarioNota.style.color = '#b9c2d4';
+            horarioNota.innerHTML = '<i class="fas fa-heart"></i> Clases de Ritmos: Martes y Miércoles 15:30hs · Zumba: Lunes, Miércoles y Viernes 18:30hs · AEROBOX: Lunes/Miércoles/Viernes noche';
+            document.querySelector('.schedule-section')?.appendChild(horarioNota);
+        })();
+    </script>
+</body>
+
+</html>
