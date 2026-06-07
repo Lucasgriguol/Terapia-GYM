@@ -4,296 +4,412 @@
     box-sizing: border-box;
 }
 
+:root {
+    --rojo: #ec1b22;
+    --rojo-dark: #851f24;
+    --rojo-deep: #481413;
+
+    --negro: #231f20;
+
+    --gris: #5d5a5b;
+    --gris-claro: #a9a7a8;
+
+    --blanco: #f6f4f5;
+    --rojo-soft: #c02c36;
+}
+
 body {
-    background: #0b0f17;
     font-family: 'Inter', sans-serif;
-    color: #eef2ff;
-    padding: 2rem 1.5rem;
+    color: var(--blanco);
+
+    background:
+        radial-gradient(circle at top,
+            rgba(236, 27, 34, .15),
+            transparent 35%),
+
+        radial-gradient(circle at bottom right,
+            rgba(192, 44, 54, .12),
+            transparent 30%),
+
+        linear-gradient(180deg,
+            #181516,
+            #231f20);
+
+    min-height: 100vh;
+    padding: 2rem 1rem;
 }
 
 .container {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .hero {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
+
+    background: rgba(35, 31, 32, .8);
+
+    border: 1px solid rgba(236, 27, 34, .2);
+
+    border-radius: 30px;
+
+    padding: 3rem 2rem;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, .35);
 }
 
 .hero h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.8rem;
-    background: linear-gradient(135deg, #FACC15, #FF8C42);
+
+    font-size: 3rem;
+
+    background:
+        linear-gradient(135deg,
+            var(--rojo),
+            #ff6464);
+
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.5rem;
-}
 
-.hero .sub {
-    color: #9ca3af;
-    font-weight: 500;
-    font-size: 1.1rem;
-    border-bottom: 1px dashed #2d3748;
-    display: inline-block;
-    padding-bottom: 0.3rem;
+    color: transparent;
+
+    margin-bottom: .8rem;
 }
 
 .horario-text {
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
-    background: #11182780;
     display: inline-block;
-    padding: 0.3rem 1rem;
-    border-radius: 40px;
+
+    background: rgba(236, 27, 34, .15);
+
+    border: 1px solid rgba(236, 27, 34, .25);
+
+    padding: .6rem 1.2rem;
+
+    border-radius: 50px;
+
+    font-size: .9rem;
 }
 
 .promos-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .promo-card {
-    background: #111827;
-    border-radius: 2rem;
-    padding: 1.5rem 1.5rem;
-    flex: 1 1 220px;
-    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s ease, box-shadow 0.2s;
-    border: 1px solid #2a3441;
+    flex: 1 1 250px;
+
+    background:
+        linear-gradient(180deg,
+            #2a2526,
+            #231f20);
+
+    border: 1px solid rgba(236, 27, 34, .12);
+
+    border-radius: 28px;
+
+    padding: 1.8rem;
+
+    transition: .3s;
+
+    position: relative;
+
+    overflow: hidden;
 }
 
 .promo-card:hover {
-    transform: translateY(-5px);
-    border-color: #facc1566;
+    transform: translateY(-8px);
+
+    border-color: var(--rojo);
+
+    box-shadow:
+        0 20px 50px rgba(236, 27, 34, .2);
+}
+
+.featured {
+    border: 2px solid var(--rojo);
+}
+
+.featured::before {
+    content: "MÁS ELEGIDA";
+
+    position: absolute;
+
+    top: 16px;
+    right: -35px;
+
+    background: var(--rojo);
+
+    color: white;
+
+    font-size: .7rem;
+    font-weight: 700;
+
+    padding: 6px 40px;
+
+    transform: rotate(35deg);
 }
 
 .promo-card h3 {
-    font-size: 1.45rem;
-    font-weight: 700;
-    color: #FACC15;
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+    color: var(--rojo);
 
-.promo-card h3 i {
-    font-size: 1.6rem;
-    color: #FF8C42;
+    font-size: 1.2rem;
+
+    display: flex;
+    gap: 10px;
+
+    align-items: center;
+
+    margin-bottom: 1rem;
 }
 
 .price {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: white;
-    margin: 0.4rem 0;
 }
 
 .price small {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #9ca3af;
+    font-size: .9rem;
+    color: var(--gris-claro);
 }
 
 .promo-note {
-    font-size: 0.85rem;
-    color: #cbd5e1;
-    margin-top: 0.5rem;
-    border-top: 1px solid #1f2a3e;
-    padding-top: 0.6rem;
+    margin-top: .8rem;
+    padding-top: .8rem;
+
+    border-top: 1px solid rgba(255, 255, 255, .08);
+
+    color: var(--gris-claro);
 }
 
 .badge {
-    background: #2d2f3b;
-    border-radius: 40px;
-    padding: 0.2rem 0.8rem;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #facc15;
     display: inline-block;
+
+    margin-top: 1rem;
+
+    background: rgba(236, 27, 34, .15);
+
+    color: #fff;
+
+    border: 1px solid rgba(236, 27, 34, .3);
+
+    padding: .35rem .8rem;
+
+    border-radius: 50px;
+
+    font-size: .75rem;
 }
 
 .plazo-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
     justify-content: center;
-    margin-bottom: 2.5rem;
+    gap: 1rem;
+
+    margin-bottom: 2rem;
 }
 
 .chip-plazo {
-    background: #111c2e;
-    border-radius: 60px;
-    padding: 0.6rem 1.6rem;
+    background: rgba(236, 27, 34, .12);
+
+    border: 1px solid rgba(236, 27, 34, .25);
+
+    padding: .8rem 1.4rem;
+
+    border-radius: 50px;
+
     font-weight: 600;
-    font-size: 0.95rem;
-    border: 1px solid #2a3a55;
-    backdrop-filter: blur(4px);
 }
 
 .chip-plazo i {
-    margin-right: 8px;
-    color: #FACC15;
+    color: var(--rojo);
 }
 
 .schedule-section {
-    background: #0f1420e6;
-    border-radius: 2rem;
-    padding: 1.8rem 1.2rem;
-    margin-bottom: 2.5rem;
-    border: 1px solid #263040;
+    background:
+        linear-gradient(180deg,
+            #2a2526,
+            #231f20);
+
+    border-radius: 30px;
+
+    padding: 2rem;
+
+    border: 1px solid rgba(236, 27, 34, .15);
+
+    margin-bottom: 2rem;
 }
 
 .section-title {
     font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+
     display: flex;
     align-items: center;
     gap: 12px;
-    border-left: 5px solid #FACC15;
+
+    margin-bottom: 1.5rem;
+
+    color: white;
+
+    border-left: 5px solid var(--rojo);
+
     padding-left: 1rem;
 }
 
 .section-title i {
-    color: #FACC15;
-    font-size: 1.7rem;
+    color: var(--rojo);
 }
 
 .table-wrapper {
     overflow-x: auto;
-    border-radius: 1.5rem;
 }
 
 .schedule-table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-    min-width: 800px;
-}
+    min-width: 850px;
 
-.schedule-table th,
-.schedule-table td {
-    padding: 1rem 0.5rem;
-    text-align: center;
-    border-bottom: 1px solid #1f2a44;
-    vertical-align: middle;
+    border-collapse: collapse;
 }
 
 .schedule-table th {
-    background: #0b1120;
-    color: #FACC15;
-    font-weight: 700;
-    font-size: 1rem;
+    background: var(--rojo);
+
+    color: white;
+
+    padding: 1rem;
 }
 
 .schedule-table td {
-    background: #11182780;
-    font-weight: 500;
+    padding: 1rem;
+
+    background: rgba(255, 255, 255, .03);
+
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+
+    text-align: center;
+
+    transition: .2s;
+}
+
+.schedule-table td:hover {
+    background: rgba(236, 27, 34, .08);
 }
 
 .time-slot {
+    color: #ff8484;
     font-weight: 700;
-    color: #FFD966;
-}
-
-.empty-slot {
-    color: #5f6e8a;
-    font-style: italic;
-    font-size: 0.75rem;
 }
 
 .row-group td:first-child {
-    background: #0f172a;
+    background: rgba(236, 27, 34, .12);
+
+    color: white;
+
     font-weight: 700;
-    color: #FACC15;
+
     text-align: left;
-    padding-left: 1rem;
+}
+
+.empty-slot {
+    color: var(--gris-claro);
 }
 
 .contact-bar {
+    background:
+        linear-gradient(180deg,
+            #2a2526,
+            #231f20);
+
+    border-radius: 30px;
+
+    padding: 1.5rem 2rem;
+
     display: flex;
     flex-wrap: wrap;
+
     justify-content: space-between;
+
     align-items: center;
-    background: #0a0f1c;
-    border-radius: 2rem;
-    padding: 1.3rem 2rem;
+
     gap: 1rem;
-    margin-top: 1rem;
-    border: 1px solid #2d3a4e;
+
+    border: 1px solid rgba(236, 27, 34, .15);
 }
 
 .contact-info {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.8rem;
-    align-items: center;
+    gap: 1.5rem;
 }
 
 .contact-info a {
-    color: #e2e8f0;
+    color: white;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-    display: inline-flex;
+
+    display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.contact-info a i {
-    color: #FACC15;
-    font-size: 1.2rem;
-}
-
-.contact-info a:hover {
-    color: #FACC15;
+.contact-info i {
+    color: var(--rojo);
 }
 
 .social-btn {
-    background: #1e293b;
-    padding: 0.6rem 1.2rem;
-    border-radius: 40px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
-}
+    background:
+        linear-gradient(135deg,
+            #833ab4,
+            #fd1d1d,
+            #fcb045);
 
-.social-btn i {
-    font-size: 1.3rem;
+    color: white;
+
+    text-decoration: none;
+
+    padding: .8rem 1.3rem;
+
+    border-radius: 50px;
+
+    font-weight: 700;
+
+    transition: .3s;
 }
 
 .social-btn:hover {
-    background: #FACC15;
-    color: #0f172a;
+    transform: translateY(-3px);
 }
 
 .legal {
-    font-size: 0.7rem;
     text-align: center;
+
     margin-top: 2rem;
-    color: #5b6e8c;
+
+    color: var(--gris-claro);
+
+    font-size: .8rem;
+
+    line-height: 1.8;
 }
 
-@media (max-width: 750px) {
-    body {
-        padding: 1rem;
-    }
+.legal span {
+    color: var(--rojo);
+    font-weight: 600;
+}
+
+@media(max-width:768px) {
 
     .hero h1 {
         font-size: 2rem;
     }
 
     .price {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 
     .contact-bar {
@@ -301,7 +417,18 @@ body {
         text-align: center;
     }
 
-    .schedule-table {
-        font-size: 0.7rem;
+    .contact-info {
+        flex-direction: column;
+        gap: .8rem;
     }
+}
+
+.hero-logo {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+
+
+    filter:
+        drop-shadow(0 0 10px rgba(236, 27, 34, .4)) drop-shadow(0 0 25px rgba(236, 27, 34, .2));
 }
